@@ -1,5 +1,7 @@
 const resetBtn = document.getElementById("tombolreset");
 const form = document.getElementById('form');
+let BottomThickness = 0;
+let FrontThickness = 0;
 
 form.addEventListener('submit', function(e) {
   const tinggi = document.getElementById('tinggi').value;
@@ -9,7 +11,7 @@ form.addEventListener('submit', function(e) {
   container2.style.display = "block";
     e.preventDefault();
     if (Number(lebar) > Number(panjang)) {
-    alert("Lebar tidak boleh lebih besar dari tinggi!");
+    alert("Lebar tidak boleh lebih besar dari panjang!");
     return; 
   }
   else{
@@ -17,6 +19,8 @@ form.addEventListener('submit', function(e) {
       volume(panjang, lebar, tinggi)
       luasPermukaan(panjang, lebar, tinggi)
       beratAir(panjang, lebar, tinggi)
+      beratTotal()
+      beratKaca()
     }
     
     });
@@ -110,13 +114,14 @@ let beta = 0;
 }
 
 function TekananAir(tinggi){
+  let TekananHidro = tinggi * 10
+  document.getElementById("TekananHidrostatis").innerHTML="Tekanan Air : " + TekananHidro.toFixed(1);
   return tinggi * 10;
 }
 
 function kacaSamping(alpha,beta, tinggi){
   //ubah ke mm
     tinggi = tinggi * 10
-    let FrontThickness = 0;
     let Tekanan = 0;
     Tekanan = TekananAir(tinggi)
 
@@ -125,24 +130,44 @@ function kacaSamping(alpha,beta, tinggi){
 
     let defleksiKacaSamping = (alpha * Tekanan * 0.000001 * (tinggi**4)) / (69000 * FrontThickness**3);
     document.getElementById("defleksiKacaSamping").innerHTML="hasil defleksi kaca samping : " + defleksiKacaSamping.toFixed(1);
+
+    return FrontThickness
 }
 
 function kacaBawah(alpha,beta, tinggi){
   //ubah ke mm
     tinggi = tinggi * 10
-    let BottomThickness = 0;
     let Tekanan = 0;
     Tekanan = TekananAir(tinggi)
 
     BottomThickness = Math.sqrt((beta * tinggi * tinggi * tinggi * 0.00001 / 5.05))
     document.getElementById("kacaBawah").innerHTML="Hasil ketebalan kaca bawah : " + BottomThickness.toFixed(1);
-
-     document.getElementById("kacaBawah").innerHTML="hasil ketebalan kaca bawah : " + BottomThickness.toFixed(1);
-
     let defleksiKacaBawah = (alpha * Tekanan * 0.000001 * (tinggi**4))/(69000*BottomThickness**3)
     document.getElementById("defleksiKacaBawah").innerHTML="hasil defleksi kaca bawah : " + defleksiKacaBawah.toFixed(1);
+
+    return BottomThickness
 }
 
+function beratKaca(){
+  let tinggi = document.getElementById('tinggi').value;
+  let panjang = document.getElementById('panjang').value;
+  let lebar = document.getElementById('lebar').value;
+
+  //ubah cm ke m
+  tinggi = tinggi/100
+  lebar = lebar/100
+  panjang = panjang/100
+
+  //ubah mm ke m
+  let FrontTebalCM = FrontThickness/1000; 
+  let BottomTebalCM = BottomThickness/1000;
+
+  let glassVolume = (2 * (panjang + lebar) * tinggi * FrontTebalCM + panjang * lebar * BottomTebalCM)
+  glassweight = glassVolume * 2500 //massa jenis kaca
+
+  document.getElementById("beratKaca").innerHTML="berat Kaca : " + glassweight.toFixed(1);
+  return glassweight
+}
 
 function volume(panjang, lebar, tinggi){
     let volume = 0;
@@ -160,10 +185,19 @@ function beratAir(panjang, lebar, tinggi, massaJenisAir = 998) {
   let volumeLiter = (panjang * lebar * tinggi) / 1000;
   let berat = (volumeLiter * massaJenisAir) / 1000; 
   document.getElementById("beratAir").innerHTML ="Berat air : " + berat.toFixed(1) + " kg";
+  return berat;
 }
 
+function beratTotal(){
+  let panjang = document.getElementById('panjang').value;
+  let lebar = document.getElementById('lebar').value;
+  let tinggi = document.getElementById('tinggi').value;
 
+  let bKaca = beratKaca();               
+  let bAir = beratAir(panjang, lebar, tinggi);  
+  let total = bKaca + bAir;
 
-   
+  document.getElementById("beratTotal").innerHTML = "Berat total : " + total.toFixed(1) + " kg";
+}
 
 
