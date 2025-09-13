@@ -1,5 +1,7 @@
 const resetBtn = document.getElementById("tombolreset");
 const form = document.getElementById('form');
+let BottomThickness = 0;
+let FrontThickness = 0;
 
 form.addEventListener('submit', function(e) {
   const tinggi = document.getElementById('tinggi').value;
@@ -107,13 +109,14 @@ let beta = 0;
 }
 
 function TekananAir(tinggi){
+  let TekananHidro = tinggi * 10
+  document.getElementById("TekananHidrostatis").innerHTML="Tekanan Air : " + TekananHidro.toFixed(1);
   return tinggi * 10;
 }
 
 function kacaSamping(alpha,beta, tinggi){
   //ubah ke mm
     tinggi = tinggi * 10
-    let FrontThickness = 0;
     let Tekanan = 0;
     Tekanan = TekananAir(tinggi)
 
@@ -122,12 +125,13 @@ function kacaSamping(alpha,beta, tinggi){
 
     let defleksiKacaSamping = (alpha * Tekanan * 0.000001 * (tinggi**4)) / (69000 * FrontThickness**3);
     document.getElementById("defleksiKacaSamping").innerHTML="hasil defleksi kaca samping : " + defleksiKacaSamping.toFixed(1);
+
+    return FrontThickness
 }
 
 function kacaBawah(alpha,beta, tinggi){
   //ubah ke mm
     tinggi = tinggi * 10
-    let BottomThickness = 0;
     let Tekanan = 0;
     Tekanan = TekananAir(tinggi)
 
@@ -136,6 +140,28 @@ function kacaBawah(alpha,beta, tinggi){
 
     let defleksiKacaBawah = (alpha * Tekanan * 0.000001 * (tinggi**4))/(69000*BottomThickness**3)
     document.getElementById("defleksiKacaBawah").innerHTML="hasil defleksi kaca bawah : " + defleksiKacaBawah.toFixed(1);
+
+    return BottomThickness
 }
 
+function beratKaca(){
+  let tinggi = document.getElementById('tinggi').value;
+  let panjang = document.getElementById('panjang').value;
+  let lebar = document.getElementById('lebar').value;
+
+  //ubah cm ke m
+  tinggi = tinggi/100
+  lebar = lebar/100
+  panjang = panjang/100
+
+  //ubah mm ke m
+  let FrontTebalCM = FrontThickness/1000; 
+  let BottomTebalCM = BottomThickness/1000;
+
+  let glassVolume = (2 * (panjang + lebar) * tinggi * FrontTebalCM + panjang * lebar * BottomTebalCM)
+  glassweight = glassVolume * 2500 //massa jenis kaca
+
+  document.getElementById("beratKaca").innerHTML="berat Kaca : " + glassweight.toFixed(1);
+  return glassweight
+}
 
