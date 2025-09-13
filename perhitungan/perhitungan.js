@@ -14,6 +14,9 @@ form.addEventListener('submit', function(e) {
   }
   else{
      ratio(panjang,tinggi,lebar)
+      volume(panjang, lebar, tinggi)
+      luasPermukaan(panjang, lebar, tinggi)
+      beratAir(panjang, lebar, tinggi)
     }
     
     });
@@ -112,12 +115,33 @@ function kacaSamping(beta, tinggi){
     tinggi = tinggi * 10
     let FrontThickness = 0;
     FrontThickness = Math.sqrt((beta * tinggi * tinggi * tinggi * 0.00001 / 5.05))
-    document.getElementById("kacaSamping").innerHTML="hasil ketebalan kaca samping : " + FrontThickness.toFixed(1);
+    document.getElementById("kacaSamping").innerHTML="Hasil ketebalan kaca samping : " + FrontThickness.toFixed(1);
 }
 
 function kacaBawah(beta, tinggi){
     tinggi = tinggi * 10
     let BottomThickness = 0;
     BottomThickness = Math.sqrt((beta * tinggi * tinggi * tinggi * 0.00001 / 5.05))
-    document.getElementById("kacaBawah").innerHTML="hasil ketebalan kaca bawah : " + BottomThickness.toFixed(1);
+    document.getElementById("kacaBawah").innerHTML="Hasil ketebalan kaca bawah : " + BottomThickness.toFixed(1);
 }
+
+function volume(panjang, lebar, tinggi){
+    let volume = 0;
+    volume = (panjang * lebar * tinggi) / 1000;
+    document.getElementById("volume").innerHTML ="Volume aquarium : " + volume.toFixed(1) + " liter";
+}
+
+function luasPermukaan(panjang, lebar, tinggi){
+    let luas = 0;
+    luas = 2 * (panjang * lebar) * tinggi + lebar * tinggi;
+    document.getElementById("luas").innerHTML ="Luas permukaan kaca : " + luas.toFixed(1) + " cm2";
+}
+
+function beratAir(panjang, lebar, tinggi, massaJenisAir = 998) {
+  let volumeLiter = (panjang * lebar * tinggi) / 1000;
+  let berat = (volumeLiter * massaJenisAir) / 1000; 
+  document.getElementById("beratAir").innerHTML ="Berat air : " + berat.toFixed(1) + " kg";
+}
+
+
+
