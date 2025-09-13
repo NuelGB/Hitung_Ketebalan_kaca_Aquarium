@@ -72,9 +72,7 @@ if (ratio <= 0.5) {
       }
     }
   }
-  
-  
-  kacaSamping(beta, tinggi)
+  kacaSamping(alpha,beta, tinggi)
 }
 
 function alphabetaKacaBawah(ratio, tinggi){
@@ -105,19 +103,39 @@ let beta = 0;
       }
     }
   }
-  kacaBawah(beta, tinggi)
+  kacaBawah(alpha,beta, tinggi)
 }
 
-function kacaSamping(beta, tinggi){
+function TekananAir(tinggi){
+  return tinggi * 10;
+}
+
+function kacaSamping(alpha,beta, tinggi){
+  //ubah ke mm
     tinggi = tinggi * 10
     let FrontThickness = 0;
+    let Tekanan = 0;
+    Tekanan = TekananAir(tinggi)
+
     FrontThickness = Math.sqrt((beta * tinggi * tinggi * tinggi * 0.00001 / 5.05))
     document.getElementById("kacaSamping").innerHTML="hasil ketebalan kaca samping : " + FrontThickness.toFixed(1);
+
+    let defleksiKacaSamping = (alpha * Tekanan * 0.000001 * (tinggi**4)) / (69000 * FrontThickness**3);
+    document.getElementById("defleksiKacaSamping").innerHTML="hasil defleksi kaca samping : " + defleksiKacaSamping.toFixed(1);
 }
 
-function kacaBawah(beta, tinggi){
+function kacaBawah(alpha,beta, tinggi){
+  //ubah ke mm
     tinggi = tinggi * 10
     let BottomThickness = 0;
+    let Tekanan = 0;
+    Tekanan = TekananAir(tinggi)
+
     BottomThickness = Math.sqrt((beta * tinggi * tinggi * tinggi * 0.00001 / 5.05))
     document.getElementById("kacaBawah").innerHTML="hasil ketebalan kaca bawah : " + BottomThickness.toFixed(1);
+
+    let defleksiKacaBawah = (alpha * Tekanan * 0.000001 * (tinggi**4))/(69000*BottomThickness**3)
+    document.getElementById("defleksiKacaBawah").innerHTML="hasil defleksi kaca bawah : " + defleksiKacaBawah.toFixed(1);
 }
+
+
