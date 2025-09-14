@@ -1,0 +1,76 @@
+
+*{margin:0; padding:0}
+
+.top{
+    width: 1526px;
+    height: 40px;
+    font-size: 23px;
+    background-color: #0077a9;
+    text-align: center;
+}
+
+html,body{
+  height:100%;
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  background-image: url(gambar/background.png);
+  background-size: cover ;
+}
+
+.container{
+  max-width:1000px;
+  margin:48px auto;
+  padding:28px;
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.button{
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:16px;
+  line-height:1.6;
+  font-size:1rem;
+  border: 1px solid rgba(255,255,255,0.03);
+  text-align: center;
+}
+
+.button a { text-decoration:none; display:inline-block; }
+#hitung{
+  border: solid 1px;
+  background: linear-gradient(90deg, var(--accent), #0077a9);
+  color: #042028;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+.manfaat{
+  background: var(--glass);
+  padding:18px;
+  border-radius:10px;
+  margin-top:8px;
+  line-height:1.6;
+  font-size:0.98rem;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+
+.STEM{
+  margin-top:18px;
+  padding:16px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.01));
+  border-radius:10px;
+  color: var(--muted);
+  font-size:0.95rem;
+  border-left: 4px solid rgba(0,188,212,0.16);
+}
+
+.STEM ol{
+  margin-top:10px;
+  padding-left:20px;
+}
+.STEM li{
+  margin-bottom:8px;
+}
+

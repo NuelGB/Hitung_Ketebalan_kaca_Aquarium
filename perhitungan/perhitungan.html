@@ -8,6 +8,91 @@
 <html>
 <body>
 
+  <div class="seluruhnya">
+
+  <div class="kolom">
+    <h2>Penjelasan</h2>
+    <p>Website ini membantu Anda merancang aquarium. Masukkan panjang, lebar, tinggi lalu sistem akan menghitung ketebalan kaca, tekanan air, dan berat.</p>
+    <p>Untuk Safety Factor yang digunakan adalah sebesar 3.8. Safety Factor adalah angka yang menunjukkan seberapa kuat kaca aquarium nilai dari safety factor bervariasi mulai dari 3 sampai 6 semakin
+      kecil Safety factor maka akan semakin kuat kekuatan kaca dalam menahan tekanan air.
+      Safety factor yang umumnya digunakan dalam standar industri untuk membangun aquarium adalah 3.8
+    </p>
+    <p>
+      berikut adalah daftar rumus yang digunakan
+    </p>
+
+    <ol>
+      <li>
+        Rumus volume aquarium : <br>
+        p x l x t 
+      </li> <br>
+      <li>
+        Rumus luas permukaan aquarium : <br>
+        2 x (pl + lt)
+      </li> <br>
+      <li>
+        Rumus ketebalan kaca <br>
+        &radic;(&beta; x t<sup>3</sup> x 0.000001/5.05) 
+      </li> <br>
+      <li>
+        Rumus defleksi kaca : <br>
+        &radic;(&alpha; x tekanan air x 0.0000001 x t<sup>4</sup>)  / (69000 x k<sup>3</sup>)
+      </li> <br>
+      <li>
+        Rumus berat air : <br>
+        volume aquarium x 998
+      </li> <br>
+      <li>
+        Rumus berat kaca : <br>
+        volume kaca x 2500
+      </li> <br>
+      <li>
+        Rumus berat total <br>
+        berat air + berat kaca
+      </li> <br>
+      <li>
+        Rumus tekanan air <br>
+        p x 10
+      </li> <br>
+      <li>
+        Rumus volume kaca :  <br>
+       2 x (p + l) x t x s + p x l x b
+      </li> <br>
+    </ol>
+   
+    <p>Keterangan : </p>
+<ol>
+  <li>
+    l : lebar
+  </li>
+  <li>
+    p : panjang
+  </li>
+  <li>
+    t : tinggi
+  </li>
+  <li>
+    k : ketebalan kaca yang terkait
+  </li>
+  <li>
+    s : ketebalan kaca samping
+  </li>
+  <li>
+    b : ketebalan kaca bawah
+  </li>
+</ol>
+
+<p>
+  &alpha; dan &beta; adalah sebuah konstanta untuk menentukan defleksi kaca dan ketebalan kaca
+</p>
+<p>
+  untuk menentukan nilai &alpha; dan &beta; bisa dilihat pada sumber refrensi
+</p>
+
+
+  </div>
+
+  <div class="kolom">
 <div id = "container">
 <form id="form">
   <label for="panjang">Panjang (cm)</label><br>
@@ -24,24 +109,32 @@
 </form> 
 </div>
 
-
-
-
-<script src="perhitungan.js"></script>
-
 <div id = "container2">
-  <div id = "volume"></div>
-  <div id = "luas"> </div>
-  <div id = "kacaSamping"></div>
-  <div id = "kacaBawah"></div>
-  <div id = "TekananHidrostatis"></div>
-  <div id = "defleksiKacaSamping"></div>
-  <div id = "defleksiKacaBawah"></div>
-  <div id = "beratAir"></div>
-  <div id = "beratKaca"></div>
-  <div id = "beratTotal"></div>
+  <h2>Hasil</h2>
+  <img id ="gambar" src ="">
+
+</img><br>
+  <div id = "volume"></div> <br>
+  <div id = "luas"> </div> <br>
+  <div id = "kacaSamping"></div> <br>
+  <div id = "kacaBawah"></div> <br>
+  <div id = "TekananHidrostatis"></div> <br>
+  <div id = "defleksiKacaSamping"></div> <br>
+  <div id = "defleksiKacaBawah"></div> <br>
+  <div id = "beratAir"></div> <br>
+  <div id = "beratKaca"></div> <br>
+  <div id = "beratTotal"></div> <br>
 </div>
 
+</div>
+
+ <div class="kolom">
+    <h2>Sumber Refrensi</h2>
+    <p>....</p>
+  </div>
+</div>
+
+<script src="perhitungan.js"></script>
 
 </body>
 </html>
