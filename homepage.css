@@ -2,7 +2,7 @@
 *{margin:0; padding:0}
 
 .top{
-    width: 1526px;
+    width: 100%;
     height: 40px;
     font-size: 23px;
     background-color: #0077a9;
@@ -37,12 +37,18 @@ html,body{
 
 .button a { text-decoration:none; display:inline-block; }
 #hitung{
-  border: solid 1px;
+  border: solid 3px;
   background: linear-gradient(90deg, var(--accent), #0077a9);
   color: #042028;
   padding:12px 18px;
   border-radius:10px;
   font-weight:600;
+  transition: ease-in-out 0.3s;
+}
+
+#hitung:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(1, 31, 43, 0.7);
 }
 
 .manfaat{
